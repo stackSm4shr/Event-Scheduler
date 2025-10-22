@@ -23,3 +23,11 @@ This project fulfills a series of functional requirements focused on front-end a
 | ------------- | ------------------------------------------------------------ |
 | **MoSi162**   | [https://github.com/MoSi162](https://github.com/MoSi162)     |
 | **OksanaYer** | [https://github.com/OksanaYer](https://github.com/OksanaYer) |
+
+---
+
+## 🗂 Project Management
+
+Trello Board: https://trello.com/b/Onm5l9In/
+
+(Tracks tasks, features, and progress for the Events App project)
