@@ -1,5 +1,4 @@
 import { Link } from "react-router";
-import LoggedIn from "../util/LoggedIn";
 
 export function Navbar() {
   return (
@@ -18,7 +17,9 @@ export function Navbar() {
           <li>
             <Link to="/signup">Sign Up</Link>
           </li>
-          <LoggedIn />
+          <li>
+            <Link to="/createevent">Create Event</Link>
+          </li>
         </ul>
       </div>
     </div>
