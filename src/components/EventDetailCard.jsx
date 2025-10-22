@@ -1,4 +1,11 @@
+import { useLocation } from "react-router";
+import formatTime from "../util/FormatTime";
+import formatDate from "../util/FormatDate";
+
 export function EventDetailCard() {
+  const location = useLocation();
+  const event = location.state;
+  console.log("Event from EventDetailCard", event);
   return (
     <div className="card border lg:card-side bg-base-100 shadow-sm">
       <figure>
@@ -8,8 +15,12 @@ export function EventDetailCard() {
         />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">"title": "Event Title"</h2>
-        <p>"description": "Some Description for the Event"</p>
+        <h2 className="card-title">{event.title}</h2>
+        <div>
+          <p>Date: {formatDate(event.date)}</p>
+          <p>Time: {formatTime(event.date)}</p>
+        </div>
+        <p>{event.description}</p>
       </div>
     </div>
   );

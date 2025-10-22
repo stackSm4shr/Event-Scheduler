@@ -16,7 +16,7 @@ export function EventCard({ event }) {
         <p>{event.description}</p>
         <div className="card-actions">
           <button className="btn btn-primary">
-            <Link to={`/eventlist/${event.id}`}>Details</Link>
+            <Link to={`/eventlist/${event.id}`} state={event}>Details</Link>
           </button>
         </div>
       </div>
