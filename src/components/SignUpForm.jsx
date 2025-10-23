@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import CreateUser from "../util/CreateUser";
+import { CreateUser } from "../util";
 
 export function SignUpForm() {
   const signUpInfo = [];

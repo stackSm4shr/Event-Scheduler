@@ -1,7 +1,6 @@
 import { useLocation } from "react-router";
-import formatTime from "../util/FormatTime";
-import formatDate from "../util/FormatDate";
-
+import { FormatTime, FormatDate } from "../util";
+// use location has to be changed when we use EventLoader
 export function EventDetailCard() {
   const location = useLocation();
   const event = location.state;
@@ -17,8 +16,8 @@ export function EventDetailCard() {
       <div className="card-body">
         <h2 className="card-title">{event.title}</h2>
         <div>
-          <p>Date: {formatDate(event.date)}</p>
-          <p>Time: {formatTime(event.date)}</p>
+          <p>Date: {FormatDate(event.date)}</p>
+          <p>Time: {FormatTime(event.date)}</p>
         </div>
         <p>{event.description}</p>
       </div>
