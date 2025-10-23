@@ -1,4 +1,4 @@
-import CreateEvent from "../util/CreateEvent";
+import { CreateEvent } from "../util";
 
 export function EventForm() {
   const eventInfo = [];

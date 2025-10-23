@@ -16,7 +16,10 @@ export function EventCard({ event }) {
         <p>{event.description}</p>
         <div className="card-actions">
           <button className="btn btn-primary">
-            <Link to={`/eventlist/${event.id}`} state={event}>Details</Link>
+            <Link to={`/eventlist/${event.id}`} state={event}>
+              {/* can be changed when we use EventLoader we do not need state={event} */}
+              Details
+            </Link>
           </button>
         </div>
       </div>
