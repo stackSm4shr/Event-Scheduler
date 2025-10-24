@@ -15,7 +15,7 @@ import {
 import MainLayout from "./layouts/MainLayout";
 import { ProtectedRoutes } from "./util";
 import { ErrorElement, Loading } from "./components";
-//import loaders with import {loader1,loader2,....} from './data';
+import { EventLoader, EventsLoader } from "./data"; 
 
 const App = () => {
   const router = createBrowserRouter(
@@ -24,7 +24,7 @@ const App = () => {
         <Route
           index
           element={<Home />}
-          // set loader with loader={loaderXYZ}
+          set loader={EventsLoader}
           errorElement={<ErrorElement />}
           hydrateFallbackElement={<Loading message="initial loading" />}
         />
@@ -43,7 +43,7 @@ const App = () => {
         />
         <Route
           path="/eventlist/:id"
-          // set loader with loader={loaderXYZ}
+          set loader={EventLoader}
           element={<EventDetail />}
           errorElement={<ErrorElement />}
           hydrateFallbackElement={<Loading message="initial loading" />}
