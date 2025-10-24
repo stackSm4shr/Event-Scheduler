@@ -1,6 +1,9 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // fetch functions go here
 =======
+=======
+>>>>>>> Stashed changes
 
 
 export async function fetchEvents() {
@@ -17,5 +20,9 @@ export async function fetchEvent(id) {
     throw new Error('Failed to fetch event');
   }
   return response.json();
+<<<<<<< Updated upstream
+}
+>>>>>>> Stashed changes
+=======
 }
 >>>>>>> Stashed changes
