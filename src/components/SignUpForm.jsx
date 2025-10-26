@@ -1,8 +1,17 @@
 import { Link } from "react-router";
-import { CreateUser } from "../util";
+//import { CreateUser } from "../util";
+import { CatchErrors } from "../util/CatchErrors";
 
-export function SignUpForm() {
-  const signUpInfo = [];
+
+export function SignUpForm({signUpInfo, setsignUpInfo}) {
+  function handleSubmit(e){
+    e.preventDefault();
+    const isValid = CatchErrors(signUpInfo);
+    if (!isValid){
+      return
+    }
+    console.log("valid, ready to create user");
+  }
 
   return (
     <div className="relative flex flex-col justify-center h-screen overflow-hidden">
@@ -10,7 +19,7 @@ export function SignUpForm() {
         <h1 className="text-3xl font-semibold text-center text-gray-700">
           Sign Up
         </h1>
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
             <label className="label">
               <span className="text-base label-text">Name</span>
@@ -19,6 +28,8 @@ export function SignUpForm() {
               type="text"
               placeholder="Name"
               className="w-full input input-bordered"
+              value= {signUpInfo.firstName}
+              onChange={(e)=> setsignUpInfo({...signUpInfo, firstName: e.target.value})}
             />
           </div>
           <div>
@@ -29,6 +40,8 @@ export function SignUpForm() {
               type="text"
               placeholder="Email Address"
               className="w-full input input-bordered"
+              value= {signUpInfo.email}
+              onChange={(e)=> setsignUpInfo({...signUpInfo, email: e.target.value})}
             />
           </div>
           <div>
@@ -39,6 +52,8 @@ export function SignUpForm() {
               type="password"
               placeholder="Enter Password"
               className="w-full input input-bordered"
+              value= {signUpInfo.password}
+              onChange={(e)=> setsignUpInfo({...signUpInfo, password: e.target.value})}
             />
           </div>
           <div>
@@ -49,6 +64,8 @@ export function SignUpForm() {
               type="password"
               placeholder="Confirm Password"
               className="w-full input input-bordered"
+              value= {signUpInfo.confirmPassword}
+              onChange={(e)=> setsignUpInfo({...signUpInfo, confirmPassword: e.target.value})}
             />
           </div>
           <div>
