@@ -5,6 +5,7 @@ import {
   EventDetail,
   CreateEvent,
   NotFound,
+  SignOut,
 } from "./pages";
 import {
   createBrowserRouter,
@@ -38,6 +39,12 @@ const App = () => {
         <Route
           path="/signup"
           element={<SignUp />}
+          errorElement={<ErrorElement />}
+          hydrateFallbackElement={<Loading message="initial loading" />}
+        />
+        <Route
+          path="/signout"
+          element={<SignOut />}
           errorElement={<ErrorElement />}
           hydrateFallbackElement={<Loading message="initial loading" />}
         />

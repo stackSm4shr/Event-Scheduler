@@ -12,7 +12,9 @@ async function SignInUser({ email, password }) {
       }),
     });
     const data = await res.json();
-    console.log(data);
+    console.log("SignInData: ",data);
+    // save token to localstoragen here
+    localStorage.setItem("token", data.token)
   } catch (error) {
     console.log(error);
   }

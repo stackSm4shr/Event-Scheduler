@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { LoginHelper } from "./LoginHelper";
 
 export function Navbar() {
   return (
@@ -11,12 +12,13 @@ export function Navbar() {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <LoginHelper />
+          {/* <li>
             <Link to="/signin">Sign In</Link>
           </li>
           <li>
             <Link to="/signup">Sign Up</Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/createevent">Create Event</Link>
           </li>
