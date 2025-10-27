@@ -9,7 +9,6 @@ async function SignInUser({ email, password }) {
       body: JSON.stringify({
         email: email,
         password: password,
-        name: firstName,
       }),
     });
     const data = await res.json();
