@@ -1,10 +1,11 @@
 import { Outlet, Navigate } from "react-router";
+import showPopup from "./showPopup.js";
 
 const ProtectedRoutes = () => {
   const user = null; // Simulate an unauthenticated user
 
   if (!user) {
-    alert("You must be logged in to access this page!");
+    showPopup("Please Sign Up first!");
     return <Navigate to="/signup" />;
   }
 
