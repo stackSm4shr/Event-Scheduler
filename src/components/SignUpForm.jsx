@@ -1,16 +1,28 @@
 import { Link } from "react-router";
-//import { CreateUser } from "../util";
+import { CreateUser } from "../util";
 import { CatchErrors } from "../util/CatchErrors";
+import { useState } from "react";
 
+export function SignUpForm() {
+  const initialFormState = {
+    firstName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    id: "",
+    token: "",
+  };
 
-export function SignUpForm({signUpInfo, setsignUpInfo}) {
-  function handleSubmit(e){
+  const [signUpInfo, setsignUpInfo] = useState(initialFormState);
+
+  function handleSubmit(e) {
     e.preventDefault();
     const isValid = CatchErrors(signUpInfo);
-    if (!isValid){
-      return
+    if (!isValid) {
+      return;
     }
-    console.log("valid, ready to create user");
+    CreateUser(signUpInfo);
+    setsignUpInfo(initialFormState);
   }
 
   return (
@@ -28,8 +40,10 @@ export function SignUpForm({signUpInfo, setsignUpInfo}) {
               type="text"
               placeholder="Name"
               className="w-full input input-bordered"
-              value= {signUpInfo.firstName}
-              onChange={(e)=> setsignUpInfo({...signUpInfo, firstName: e.target.value})}
+              value={signUpInfo.firstName}
+              onChange={(e) =>
+                setsignUpInfo({ ...signUpInfo, firstName: e.target.value })
+              }
             />
           </div>
           <div>
@@ -40,8 +54,10 @@ export function SignUpForm({signUpInfo, setsignUpInfo}) {
               type="text"
               placeholder="Email Address"
               className="w-full input input-bordered"
-              value= {signUpInfo.email}
-              onChange={(e)=> setsignUpInfo({...signUpInfo, email: e.target.value})}
+              value={signUpInfo.email}
+              onChange={(e) =>
+                setsignUpInfo({ ...signUpInfo, email: e.target.value })
+              }
             />
           </div>
           <div>
@@ -52,8 +68,10 @@ export function SignUpForm({signUpInfo, setsignUpInfo}) {
               type="password"
               placeholder="Enter Password"
               className="w-full input input-bordered"
-              value= {signUpInfo.password}
-              onChange={(e)=> setsignUpInfo({...signUpInfo, password: e.target.value})}
+              value={signUpInfo.password}
+              onChange={(e) =>
+                setsignUpInfo({ ...signUpInfo, password: e.target.value })
+              }
             />
           </div>
           <div>
@@ -64,8 +82,13 @@ export function SignUpForm({signUpInfo, setsignUpInfo}) {
               type="password"
               placeholder="Confirm Password"
               className="w-full input input-bordered"
-              value= {signUpInfo.confirmPassword}
-              onChange={(e)=> setsignUpInfo({...signUpInfo, confirmPassword: e.target.value})}
+              value={signUpInfo.confirmPassword}
+              onChange={(e) =>
+                setsignUpInfo({
+                  ...signUpInfo,
+                  confirmPassword: e.target.value,
+                })
+              }
             />
           </div>
           <div>
