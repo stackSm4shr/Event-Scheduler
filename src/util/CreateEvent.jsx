@@ -1,5 +1,4 @@
-async function CreateEvent({ title, description, date, location, lat, long }) {
-    //must be changed
+async function CreateEvent(eventData) {
   try {
     const res = await fetch("http://localhost:3001/api/users", {
       method: "POST",
@@ -7,19 +6,13 @@ async function CreateEvent({ title, description, date, location, lat, long }) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-      body: JSON.stringify({
-        title: title,
-        description: description,
-        date: date,
-        location: location,
-        latitude: lat,
-        longitude: long,
-      }),
+      body: JSON.stringify(eventData),
     });
     const data = await res.json();
-    console.log(data);
+    return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    throw error;
   }
 }
 
