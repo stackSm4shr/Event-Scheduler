@@ -1,26 +1,25 @@
-async function CreateEvent({ title, description, date, location, lat, long }) {
-    //must be changed
-  try {
-    const res = await fetch("http://localhost:3001/api/users", {
+export async function CreateEvent({title,description,date,location,longitude,latitude}) {
+  try { 
+    const res = await fetch("http://localhost:3001/api/events", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-      body: JSON.stringify({
+     body: JSON.stringify({
         title: title,
         description: description,
         date: date,
         location: location,
-        latitude: lat,
-        longitude: long,
+        latitude: latitude,
+        longitude: longitude,
       }),
     });
-    const data = await res.json();
-    console.log(data);
-  } catch (error) {
-    console.log(error);
+    return await res.json();
+  } catch (err) {
+    console.error(err);
+    throw err;
   }
 }
 
-export default CreateEvent;
+export default CreateEvent; 
