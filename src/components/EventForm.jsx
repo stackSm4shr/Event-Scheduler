@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CatchEventErrors } from "../util/CatchEventErrors";
-import CreateEvent from "../util/CreateEvent";  // <-- default import, NO curly braces
+import CreateEvent from "../util/CreateEvent";
 
 export function EventForm() {
   const initialFormState = {
