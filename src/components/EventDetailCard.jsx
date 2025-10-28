@@ -1,9 +1,10 @@
-import { useLocation } from "react-router";
+import { useLoaderData } from "react-router";
 import { FormatTime, FormatDate } from "../util";
 // use location has to be changed when we use EventLoader
 export function EventDetailCard() {
-  const location = useLocation();
-  const event = location.state;
+  // const location = useLocation();
+  // const event = location.state;
+  const { event } = useLoaderData();
   console.log("Event from EventDetailCard", event);
   return (
     <div className="card border lg:card-side bg-base-100 shadow-sm">
