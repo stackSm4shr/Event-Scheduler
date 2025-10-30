@@ -1,5 +1,4 @@
 async function SignInUser({ email, password }) {
-  console.log(" SignInUser:", email, password);
   try {
     const res = await fetch("http://localhost:3001/api/auth/login", {
       method: "POST",
@@ -7,16 +6,28 @@ async function SignInUser({ email, password }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: email,
-        password: password,
+        email,
+        password
       }),
     });
+
+    if (!res.ok) {
+      throw new Error(`Login failed: ${res.status}`);
+    }
+
+  
     const data = await res.json();
-    console.log("SignInData: ",data);
-    // save token to localstoragen here
-    localStorage.setItem("token", data.token)
+    console.log("SignIn data:", data);
+
+    if (data.token) {
+      localStorage.setItem("token", data.token);
+    }
+
+    return data;
+
   } catch (error) {
-    console.log(error);
+    console.error("SignInUser error:", error);
+    throw error;
   }
 }
 
