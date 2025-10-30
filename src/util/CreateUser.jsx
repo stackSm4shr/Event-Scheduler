@@ -1,5 +1,6 @@
+import { useState } from "react";
+
 async function CreateUser({ firstName, email, password }) {
-  console.log(" createuser:", firstName, email, password);
   try {
     const res = await fetch("http://localhost:3001/api/users", {
       method: "POST",
@@ -7,15 +8,24 @@ async function CreateUser({ firstName, email, password }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: email,
-        password: password,
-        name: firstName,
+        firstName,
+        email,
+        password,
       }),
     });
+
+    
+    if (!res.ok) {
+      throw new Error(`Server error: ${res.status}`);
+    }
+
     const data = await res.json();
-    console.log(data);
+    console.log("User created:", data); 
+    return data; 
+
   } catch (error) {
-    console.log(error);
+    console.error("CreateUser error:", error);
+    throw error; 
   }
 }
 
